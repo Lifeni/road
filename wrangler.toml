@@ -1,0 +1,8 @@
+name = "router"
+compatibility_date = "2023-01-01"
+kv_namespaces = [
+  { binding = "urls", id = "30ed2c5084cb4613a6aaed2e69bd943f", preview_id = "3ec087bcdfac4bcb806eabee47a58fef" },
+]
+
+[site]
+bucket = "./assets"
