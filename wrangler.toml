@@ -1,7 +1,7 @@
 name = "router"
 compatibility_date = "2023-01-01"
 kv_namespaces = [
-  { binding = "urls", id = "30ed2c5084cb4613a6aaed2e69bd943f", preview_id = "3ec087bcdfac4bcb806eabee47a58fef" },
+  { binding = "routes", id = "629a46b3f90d4b5ba105b6d061afc0b8", preview_id = "07a036f9ddb144c0b51b4085b4126cd2" },
 ]
 
 [site]

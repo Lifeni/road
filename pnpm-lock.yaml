@@ -2,8 +2,11 @@ lockfileVersion: '6.0'
 
 dependencies:
   hono:
-    specifier: ^3.1.4
-    version: 3.1.4
+    specifier: ^3.1.5
+    version: 3.1.5
+  reflare:
+    specifier: ^1.1.1
+    version: 1.1.1
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -590,8 +593,8 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /hono@3.1.4:
-    resolution: {integrity: sha512-uboRdKRHF+LtNrprlrgX+PPeSGiXHHML4VzUTVLSyFYnctfB2E93TgbAQskMNjrOufG1fI8zXRx3we93SnYITw==}
+  /hono@3.1.5:
+    resolution: {integrity: sha512-ypFLhNYoXXtep4I9zJt3VpB5/Ze3p9BLU4dpnAp7fxHOmSg8lu/Wwjs5sTJnb2GwVdfjbt9KFB9alA4Zt/P0jw==}
     engines: {node: '>=16.0.0'}
     dev: false
 
@@ -789,6 +792,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /reflare@1.1.1:
+    resolution: {integrity: sha512-W3S78aCwbVVPzmmgK7PYhHSQBkDaX1ZzaOAarTHFHawoKmlg714b/fpv8gv7hnkOyIbQP0qlFn2laIBgCwOtWA==}
+    dev: false
 
   /rollup-plugin-inject@3.0.2:
     resolution: {integrity: sha512-ptg9PQwzs3orn4jkgXJ74bfs5vYz1NCZlSQMBUA0wKcGp5i5pA1AO3fOUEte8enhGUC+iapTCzEWw2jEFFUO/w==}
