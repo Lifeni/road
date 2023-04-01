@@ -3,6 +3,3 @@ compatibility_date = "2023-01-01"
 kv_namespaces = [
   { binding = "routes", id = "629a46b3f90d4b5ba105b6d061afc0b8", preview_id = "07a036f9ddb144c0b51b4085b4126cd2" },
 ]
-
-[site]
-bucket = "./assets"
