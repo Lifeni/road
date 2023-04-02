@@ -7,7 +7,7 @@ proxy.get('/*', async c => {
   let path = c.req.path.replace('/-/', '')
   console.log(path)
   if (!path) return c.body(null, 400)
-  if (!path.startsWith('http://') || !path.startsWith('https://'))
+  if (!path.startsWith('http://') && !path.startsWith('https://'))
     path = 'https://' + path
 
   const url = new URL(path)

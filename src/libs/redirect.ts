@@ -8,13 +8,19 @@ redirect.get('/:slug', async c => {
   if (reserved.includes(slug)) return c.body(null, 403)
 
   const routes = c.env?.routes as KVNamespace
-  const url = await routes.get(slug)
-  const text = c.req.query('text')
-  const json = c.req.query('json')
-
+  let url = await routes.get(slug)
   if (!url) return c.body(null, 404)
-  if (text !== undefined) return c.text(url)
-  if (json !== undefined) return c.json({ slug, url })
+  if (!url.startsWith('http://') && !url.startsWith('https://'))
+    url = 'https://' + url
+
+  const text =
+    c.req.query('text') !== undefined || c.req.query('t') !== undefined
+  const json =
+    c.req.query('json') !== undefined || c.req.query('j') !== undefined
+
+  console.debug(slug, '-->', url)
+  if (text) return c.text(url)
+  if (json) return c.json({ slug, url })
   return c.redirect(url, 302)
 })
 
@@ -65,6 +71,27 @@ redirect.post('/:slug', async c => {
   try {
     await routes.put(slug, target)
     return c.body(null, 204)
+  } catch (error) {
+    return c.body(null, 500)
+  }
+})
+
+redirect.get('/+/:url', async c => {
+  const url = c.req.param('url')
+  const routes = c.env?.routes as KVNamespace
+  const ids = ((Number(await routes.get('ids')) || 1000) + 1).toString()
+  const host = new URL(c.req.url).host
+
+  const json =
+    c.req.query('json') !== undefined || c.req.query('j') !== undefined
+
+  if (!url) return c.body(null, 400)
+  try {
+    await routes.put(ids, url)
+    await routes.put('ids', ids)
+
+    if (json) return c.json({ url: `${host}/${ids}` })
+    return c.text(`${host}/${ids}`)
   } catch (error) {
     return c.body(null, 500)
   }
