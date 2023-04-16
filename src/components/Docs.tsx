@@ -3,11 +3,20 @@ import { IndexProps } from '../routers'
 const docs = [
   {
     name: '重定向链接',
+    hide: false,
     apis: [
       {
         method: 'PUT',
         path: '/<CODE>?to=<URL>',
-        descriptions: ['创建或替换一个重定向地址，需指定后缀。'],
+        descriptions: [
+          '创建或替换一个重定向地址，需指定后缀。',
+          '如需自动生成后缀，可选择「快捷重定向」接口。',
+        ],
+      },
+      {
+        method: 'POST',
+        path: '/<CODE>?to=<URL>',
+        descriptions: ['修改指定后缀的重定向地址。'],
       },
       {
         method: 'GET',
@@ -22,25 +31,11 @@ const docs = [
         path: '/<CODE>',
         descriptions: ['删除指定后缀的重定向地址。'],
       },
-      {
-        method: 'POST',
-        path: '/<CODE>?to=<URL>',
-        descriptions: ['修改指定后缀的重定向地址。'],
-      },
     ],
   },
   {
-    name: '反向代理',
-    apis: [
-      {
-        method: 'GET',
-        path: '/-/<URL>',
-        descriptions: ['借助 Cloudflare Workers 代理访问某个地址。'],
-      },
-    ],
-  },
-  {
-    name: '快捷方式',
+    name: '快捷重定向',
+    hide: false,
     apis: [
       {
         method: 'GET',
@@ -52,32 +47,55 @@ const docs = [
       },
     ],
   },
-]
+  {
+    name: '反向代理',
+    hide: true,
+    apis: [
+      {
+        method: 'GET',
+        path: '/-/<URL>',
+        descriptions: ['借助 Cloudflare Workers 代理访问某个地址。'],
+      },
+    ],
+  },
+] as const
+
+const maps = {
+  GET: 'success',
+  POST: 'done',
+  PUT: 'accent',
+  DELETE: 'danger',
+}
 
 export const Docs = ({ host }: IndexProps) => (
   <article>
-    {docs.map(({ name, apis }) => (
-      <section class="Box-row">
-        <h2 class="h6 mb-2 pb-1">{name}</h2>
-        <ul class="list-style-none">
-          {apis.map(({ method, path, descriptions }) => (
-            <li class="mt-2">
-              <h3 class="h6 mb-2">
-                <code class="IssueLabel color-bg-accent-emphasis color-fg-on-emphasis mr-1">
-                  {method}
-                </code>
-                <code class="Label mr-1 Label--accent">
-                  {host}
-                  {path}
-                </code>
-              </h3>
-              {descriptions.map(description => (
-                <p class="mb-0 f6 lh-default">{description}</p>
+    {docs.map(
+      ({ name, hide, apis }) =>
+        !hide && (
+          <section class="Box-row">
+            <h2 class="h5 pb-1">{name}</h2>
+            <ul class="list-style-none">
+              {apis.map(({ method, path, descriptions }) => (
+                <li class="mt-2">
+                  <h3 class="h6 mb-1 pb-1">
+                    <code
+                      class={`IssueLabel color-bg-${maps[method]}-emphasis color-fg-on-emphasis mr-1`}
+                    >
+                      {method}
+                    </code>
+                    <code class={`Label mr-1 Label--${maps[method]}`}>
+                      {host}
+                      {path}
+                    </code>
+                  </h3>
+                  {descriptions.map(description => (
+                    <p class="mb-0 f6">{description}</p>
+                  ))}
+                </li>
               ))}
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
+            </ul>
+          </section>
+        )
+    )}
   </article>
 )

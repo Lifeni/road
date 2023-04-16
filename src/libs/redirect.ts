@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { reserved } from '../app'
+import { NotFound } from '../routers/404'
 
 export const redirect = new Hono()
 
@@ -9,7 +10,7 @@ redirect.get('/:slug', async c => {
 
   const routes = c.env?.routes as KVNamespace
   let url = await routes.get(slug)
-  if (!url) return c.body(null, 404)
+  if (!url) return c.html(NotFound(), 404)
   if (!url.startsWith('http://') && !url.startsWith('https://'))
     url = 'https://' + url
 

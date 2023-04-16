@@ -1,8 +1,6 @@
 {
   "name": "router",
-  "description": "「随意链接」",
   "private": true,
-  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "dev": "wrangler dev --local src/app.tsx",
