@@ -4,7 +4,7 @@ import { prettyJSON } from 'hono/pretty-json'
 import { Favicon } from './components/base/Icons'
 import { proxy } from './libs/proxy'
 import { redirect } from './libs/redirect'
-import { Index } from './routers'
+import { IndexPage } from './routers'
 
 const app = new Hono()
 export const reserved = ['/', '/ids', '/+', '/-', '/robots.txt', '/favicon.svg']
@@ -14,7 +14,7 @@ app.use('*', logger())
 
 app.get('/', c => {
   const host = new URL(c.req.url).host
-  return c.html(<Index host={host} />)
+  return c.html(IndexPage({ host }))
 })
 
 app.get('/robots.txt', c => c.text('User-agent: *\nDisallow: /'))
@@ -41,15 +41,15 @@ app.post('/', async c => {
   const url = form.get('url')
   const host = new URL(c.req.url).host
 
-  if (reserved.includes(slug)) return c.html(<Index type="error" host={host} />)
-  if (!url) return c.html(<Index type="error" host={host} />)
+  if (reserved.includes(slug) || !url)
+    return c.html(IndexPage({ type: 'error', host }))
   try {
     await routes.put(slug, url)
     if (slug === ids) await routes.put('ids', slug)
-    return c.html(<Index type="ok" url={`${host}/${slug}`} host={host} />)
+    return c.html(IndexPage({ type: 'ok', host, url: `${host}/${slug}` }))
   } catch (error) {
     console.error(error)
-    return c.html(<Index type="error" host={host} />)
+    return c.html(IndexPage({ type: 'error', host }))
   }
 })
 

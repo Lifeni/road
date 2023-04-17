@@ -3,13 +3,13 @@ import { Layout } from '../components/Layout'
 import { Messages } from '../components/Messages'
 import { Bookmark } from '../components/base/Icons'
 
-export interface IndexProps {
+interface Props {
   type?: 'ok' | 'error'
   url?: string
   host?: string
 }
 
-export const Index = ({ type, url, host }: IndexProps) => (
+export const IndexPage = ({ type, url, host }: Props) => (
   <Layout
     children={(() => (
       <>

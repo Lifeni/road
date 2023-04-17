@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   hono:
-    specifier: ^3.1.5
-    version: 3.1.5
+    specifier: ^3.1.6
+    version: 3.1.6
   reflare:
     specifier: ^1.1.4
     version: 1.1.4
@@ -12,6 +12,9 @@ devDependencies:
   '@cloudflare/workers-types':
     specifier: ^4.20230404.0
     version: 4.20230404.0
+  prettier:
+    specifier: ^2.8.7
+    version: 2.8.7
   wrangler:
     specifier: ^2.15.1
     version: 2.15.1
@@ -593,8 +596,8 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /hono@3.1.5:
-    resolution: {integrity: sha512-ypFLhNYoXXtep4I9zJt3VpB5/Ze3p9BLU4dpnAp7fxHOmSg8lu/Wwjs5sTJnb2GwVdfjbt9KFB9alA4Zt/P0jw==}
+  /hono@3.1.6:
+    resolution: {integrity: sha512-ugC7YbuyATZChp+SxfstiavvTCqENjvSiTiDAkbAOP20pJ58N4kXcbDi93SwZrvMFA2VVx1veMYHrsvUY9hcVA==}
     engines: {node: '>=16.0.0'}
     dev: false
 
@@ -784,6 +787,12 @@ packages:
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+    dev: true
+
+  /prettier@2.8.7:
+    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /readdirp@3.6.0:

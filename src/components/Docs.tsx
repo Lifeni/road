@@ -1,4 +1,4 @@
-import { IndexProps } from '../routers'
+import { Props } from '../routers'
 
 const docs = [
   {
@@ -67,7 +67,7 @@ const maps = {
   DELETE: 'danger',
 }
 
-export const Docs = ({ host }: IndexProps) => (
+export const Docs = ({ host }: Props) => (
   <article>
     {docs.map(
       ({ name, hide, apis }) =>

@@ -1,7 +1,7 @@
-import { IndexProps } from '../routers'
+import { Props } from '../routers'
 import { Error, Ok } from './base/Icons'
 
-export const Messages = ({ type, url }: IndexProps) => (
+export const Messages = ({ type, url }: Props) => (
   <div>
     {type === 'ok' ? (
       <div class="flash flash-full flash-success py-2 pl-3 pr-2 border-0 border-top">

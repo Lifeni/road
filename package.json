@@ -3,15 +3,17 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "wrangler dev --local src/app.tsx",
-    "deploy": "wrangler publish --minify src/app.tsx"
+    "wrangler": "wrangler",
+    "dev": "wrangler dev --local src/app.ts",
+    "deploy": "wrangler publish --minify src/app.ts"
   },
   "dependencies": {
-    "hono": "^3.1.5",
+    "hono": "^3.1.6",
     "reflare": "^1.1.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230404.0",
+    "prettier": "^2.8.7",
     "wrangler": "^2.15.1"
   }
 }
