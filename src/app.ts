@@ -24,20 +24,20 @@ app.get('/favicon.svg', c =>
 
 app.get('/ids', async c => {
   const routes = c.env?.routes as KVNamespace
-  const ids = await routes.get('ids')
+  const ids = Number(await routes.get('ids')) || 1
   const json =
     c.req.query('json') !== undefined || c.req.query('j') !== undefined
 
-  if (json) return c.json({ ids: ids || '1000' })
-  else return c.text(ids || '1000')
+  if (json) return c.json({ ids })
+  else return c.text(`${ids}`)
 })
 
 app.post('/', async c => {
   const form = await c.req.formData()
   const routes = c.env?.routes as KVNamespace
-  const ids = ((Number(await routes.get('ids')) || 1000) + 1).toString()
+  const ids = (Number(await routes.get('ids')) || 1) + 1
 
-  const slug = form.get('slug') || ids
+  const slug = form.get('slug') || `${ids}`
   const url = form.get('url')
   const host = new URL(c.req.url).host
 
@@ -45,7 +45,7 @@ app.post('/', async c => {
     return c.html(IndexPage({ type: 'error', host }))
   try {
     await routes.put(slug, url)
-    if (slug === ids) await routes.put('ids', slug)
+    if (slug === `${ids}`) await routes.put('ids', slug)
     return c.html(IndexPage({ type: 'ok', host, url: `${host}/${slug}` }))
   } catch (error) {
     console.error(error)

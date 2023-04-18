@@ -84,7 +84,7 @@ redirect.post('/:slug', async c => {
 redirect.get('/+/:url', async c => {
   const url = c.req.param('url')
   const routes = c.env?.routes as KVNamespace
-  const ids = ((Number(await routes.get('ids')) || 1000) + 1).toString()
+  const ids = (Number(await routes.get('ids')) || 1) + 1
   const host = new URL(c.req.url).host
 
   const json =
@@ -92,8 +92,8 @@ redirect.get('/+/:url', async c => {
 
   if (!url) return c.html(ErrorPage({ code: 400 }), 400)
   try {
-    await routes.put(ids, url)
-    await routes.put('ids', ids)
+    await routes.put(`${ids}`, url)
+    await routes.put('ids', `${ids}`)
 
     if (json) return c.json({ url: `${host}/${ids}` })
     return c.text(`${host}/${ids}`)

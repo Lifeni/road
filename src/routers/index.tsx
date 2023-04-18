@@ -3,7 +3,7 @@ import { Layout } from '../components/Layout'
 import { Messages } from '../components/Messages'
 import { Bookmark } from '../components/base/Icons'
 
-interface Props {
+export interface Props {
   type?: 'ok' | 'error'
   url?: string
   host?: string
@@ -36,7 +36,7 @@ export const IndexPage = ({ type, url, host }: Props) => (
             <details class="details-overlay details-overlay-dark">
               <summary class="btn btn-sm">API</summary>
               <aside class="Box color-shadow-extra-large">
-                <Docs host={host} />
+                <Docs />
               </aside>
             </details>
           </section>
@@ -67,7 +67,7 @@ export const IndexPage = ({ type, url, host }: Props) => (
           </section>
           <Messages type={type} url={url} />
         </form>
-        <p class="w-full f6 text-center color-fg-subtle pt-2 mt-1">
+        <p class="w-full f6 text-center color-fg-subtle pt-2 mt-1 mb-0">
           {'Powered by '}
           <a
             href="https://developers.cloudflare.com/workers/"

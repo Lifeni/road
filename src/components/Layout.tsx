@@ -63,6 +63,12 @@ export const Style = html`
       max-width: 22rem;
     }
 
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
     aside {
       position: fixed;
       top: 50%;

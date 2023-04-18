@@ -1,4 +1,4 @@
-import { Props } from '../routers'
+import { Props } from '../routers/index'
 import { Error, Ok } from './base/Icons'
 
 export const Messages = ({ type, url }: Props) => (
