@@ -1,3 +1,5 @@
+import { Code } from './base/Icons'
+
 const docs = [
   {
     name: '重定向链接',
@@ -45,12 +47,10 @@ const docs = [
   },
   {
     name: '反向代理',
-    hide: false,
     apis: [
       {
         method: 'GET',
         path: '/-/<URL>',
-        hide: false,
         descriptions: ['借助 Cloudflare Workers 代理访问某个地址。'],
       },
     ],
@@ -68,7 +68,10 @@ export const Docs = () => (
   <article>
     {docs.map(({ name, apis }) => (
       <section class="Box-row">
-        <h2 class="h5 pb-1">{name}</h2>
+        <h2 class="h5 pb-1 d-flex flex-items-center">
+          {Code}
+          <span class="px-2 flex-1">{name}</span>
+        </h2>
         <ul class="list-style-none">
           {apis.map(({ method, path, descriptions }) => (
             <li class="mt-2">

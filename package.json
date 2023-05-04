@@ -8,12 +8,12 @@
     "deploy": "wrangler publish --minify src/app.ts"
   },
   "dependencies": {
-    "hono": "^3.1.6",
+    "hono": "^3.1.8",
     "reflare": "^1.1.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230404.0",
-    "prettier": "^2.8.7",
-    "wrangler": "^2.15.1"
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "prettier": "^2.8.8",
+    "wrangler": "^2.19.0"
   }
 }
