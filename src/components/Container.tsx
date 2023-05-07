@@ -1,10 +1,10 @@
 import { html } from 'hono/html'
 
-interface LayoutProps {
+interface ContainerProps {
   children: string
 }
 
-export const Layout = ({ children }: LayoutProps) => html`<!DOCTYPE html>
+export const Container = ({ children }: ContainerProps) => html`<!DOCTYPE html>
   <html
     lang="zh-hans"
     data-color-mode="auto"
@@ -29,7 +29,7 @@ const Head = () => (
   </head>
 )
 
-const Body = ({ children }: LayoutProps) => (
+const Body = ({ children }: ContainerProps) => (
   <body class="d-flex flex-column flex-items-center flex-justify-center">
     <main class="flex-1 px-6 py-5 width-full clearfix d-flex flex-column flex-items-center flex-justify-center">
       {children}
@@ -55,6 +55,10 @@ export const Style = html`
       font-family: Inter, -apple-system, MiSans, 'HarmonyOS Sans SC', system-ui,
         'Roboto', sans-serif;
       overflow: overlay;
+    }
+
+    tt, code, samp{
+      font-family: 'Cascadia Code', Consolas, MiSans, 'HarmonyOS Sans SC', monospace;
     }
 
     main,

@@ -1,5 +1,5 @@
+import { Container } from '../components/Container'
 import { Docs } from '../components/Docs'
-import { Layout } from '../components/Layout'
 import { Messages } from '../components/Messages'
 import { Bookmark } from '../components/base/Icons'
 
@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export const IndexPage = ({ type, url, host }: Props) => (
-  <Layout
+  <Container
     children={(() => (
       <>
         <form

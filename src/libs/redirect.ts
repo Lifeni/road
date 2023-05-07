@@ -20,7 +20,7 @@ redirect.get('/:slug', async c => {
   const json =
     c.req.query('json') !== undefined || c.req.query('j') !== undefined
 
-  console.debug(slug, '-->', url)
+  console.debug('[Redirect]', slug, '-->', url)
   if (text) return c.text(url)
   if (json) return c.json({ slug, url })
   return c.redirect(url, 302)

@@ -1,24 +1,27 @@
-import { Layout } from '../components/Layout'
-import { Error } from '../components/base/Icons'
+import { Container } from '../components/Container'
+import { Info } from '../components/base/Icons'
 
 interface Props {
   code: 404 | 400 | 403 | 500
 }
 
 const maps = {
-  404: '404 Page Not Found',
-  400: '400 Bad Request',
-  403: '403 Forbidden',
-  500: '500 Internal Server Error',
+  404: ['404 Page Not Found', '找不到页面'],
+  400: ['400 Bad Request', '请求错误'],
+  403: ['403 Forbidden', '禁止访问'],
+  500: ['500 Internal Server Error', '服务器错误'],
 }
 
 export const ErrorPage = ({ code }: Props) => (
-  <Layout
+  <Container
     children={(() => (
-      <div class="flash flash-error py-2">
-        <section class="d-flex flex-items-center my-1">
-          {Error}
-          <code class="h6">{maps[code]}</code>
+      <div class="flash py-2">
+        <section class="d-flex flex-items-start">
+          <span class="my-1">{Info}</span>
+          <div class="d-flex flex-column py-1">
+            <span class="f5 mb-1 text-bold">{maps[code][0]}</span>
+            <span class="f6 color-fg-subtle">{maps[code][1]}</span>
+          </div>
         </section>
       </div>
     ))()}
