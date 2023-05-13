@@ -22,6 +22,7 @@ const Head = () => (
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="https://file.lifeni.life/assets/primer.css" />
     <title>随意链接</title>
+    <meta name="description" content="简单重定向指定链接。" />
     {Style}
   </head>
 )
