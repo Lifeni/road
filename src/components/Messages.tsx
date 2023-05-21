@@ -26,7 +26,7 @@ export const Messages = ({ type, url, protocol }: Props) => (
             class="btn-octicon btn-sm color-fg-default text-sm"
             type="button"
             aria-label="复制链接"
-            onclick={`navigator.clipboard.writeText('${url}')`}
+            onclick={`navigator.clipboard.writeText('${protocol}//${url}')`}
           >
             {Copy} 复制
           </button>

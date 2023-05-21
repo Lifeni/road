@@ -43,7 +43,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
           </section>
           <section class="Box-body border-bottom-0">
             <input
-              class="form-control input-block input-lg mb-2 py-2"
+              class="form-control input-block input-lg mb-2 py-2 f5"
               name="url"
               type="url"
               required
@@ -52,7 +52,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
             />
             <section class="pt-1 d-flex flex-items-center">
               <input
-                class="form-control input-block input-lg mr-2 py-2"
+                class="form-control input-block input-lg mr-2 py-2 f5"
                 name="slug"
                 type="text"
                 placeholder="自定义后缀"
