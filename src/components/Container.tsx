@@ -1,10 +1,10 @@
 import { html } from 'hono/html'
 
-interface ContainerProps {
+interface Props {
   children: string
 }
 
-export const Container = ({ children }: ContainerProps) => html`<!DOCTYPE html>
+export const Container = ({ children }: Props) => html`<!DOCTYPE html>
   <html
     lang="zh-hans"
     data-color-mode="auto"
@@ -23,19 +23,25 @@ const Head = () => (
     <link rel="stylesheet" href="https://file.lifeni.life/assets/primer.css" />
     <title>随意链接</title>
     <meta name="description" content="简单重定向指定链接。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"
+      rel="stylesheet"
+    />
     {Style}
   </head>
 )
 
-const Body = ({ children }: ContainerProps) => (
-  <body class="d-flex flex-column flex-items-center flex-justify-center">
+const Body = ({ children }: Props) => (
+  <body class="d-flex flex-column flex-items-center flex-justify-center text-medium">
     <main class="flex-1 px-6 py-5 width-full clearfix d-flex flex-column flex-items-center flex-justify-center">
       {children}
     </main>
 
     <footer class="width-full d-flex flex-row flex-justify-end px-6 py-5">
       <a
-        class="color-fg-subtle f6"
+        class="Link--onHover Link--secondary f6"
         href="https://beian.miit.gov.cn/"
         target="_blank"
         rel="noopener noreferrer"
@@ -57,6 +63,10 @@ export const Style = html`
 
     tt, code, samp{
       font-family: 'Cascadia Code', Consolas, MiSans, 'HarmonyOS Sans SC', monospace;
+    }
+
+    input {
+      font-family: inherit;
     }
 
     main,

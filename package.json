@@ -4,16 +4,17 @@
   "license": "MIT",
   "scripts": {
     "wrangler": "wrangler",
-    "dev": "wrangler dev --local src/app.ts",
-    "deploy": "wrangler publish --minify src/app.ts"
+    "dev": "wrangler dev src/app.ts",
+    "deploy": "wrangler deploy --minify src/app.ts"
   },
   "dependencies": {
-    "hono": "^3.1.8",
+    "@nuintun/qrcode": "^3.3.4",
+    "hono": "^3.2.1",
     "reflare": "^1.1.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230419.0",
+    "@cloudflare/workers-types": "^4.20230511.0",
     "prettier": "^2.8.8",
-    "wrangler": "^2.19.0"
+    "wrangler": "^3.0.0"
   }
 }

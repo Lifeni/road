@@ -6,10 +6,11 @@ import { Bookmark } from '../components/base/Icons'
 export interface Props {
   type?: 'ok' | 'error'
   url?: string
+  protocol?: string
   host?: string
 }
 
-export const IndexPage = ({ type, url, host }: Props) => (
+export const IndexPage = ({ type, url, protocol }: Props) => (
   <Container
     children={(() => (
       <>
@@ -65,7 +66,7 @@ export const IndexPage = ({ type, url, host }: Props) => (
               </button>
             </section>
           </section>
-          <Messages type={type} url={url} />
+          <Messages type={type} url={url} protocol={protocol} />
         </form>
         <p class="w-full f6 text-center color-fg-subtle pt-2 mt-1 mb-0">
           {'Powered by '}

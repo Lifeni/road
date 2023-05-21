@@ -19,7 +19,7 @@ export const ErrorPage = ({ code }: Props) => (
         <section class="d-flex flex-items-start">
           <span class="my-1">{Info}</span>
           <div class="d-flex flex-column py-1">
-            <span class="f5 mb-1 text-bold">{maps[code][0]}</span>
+            <span class="f5 mb-1 text-medium">{maps[code][0]}</span>
             <span class="f6 color-fg-subtle">{maps[code][1]}</span>
           </div>
         </section>

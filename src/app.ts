@@ -40,13 +40,16 @@ app.post('/', async c => {
   const slug = form.get('slug') || `${ids}`
   const url = form.get('url')
   const host = new URL(c.req.url).host
+  const protocol = new URL(c.req.url).protocol
 
-  if (reserved.includes(slug) || !url)
+  if (reserved.includes(`/${slug}`) || !url)
     return c.html(IndexPage({ type: 'error', host }))
   try {
     await routes.put(slug, url)
     if (slug === `${ids}`) await routes.put('ids', slug)
-    return c.html(IndexPage({ type: 'ok', host, url: `${host}/${slug}` }))
+    return c.html(
+      IndexPage({ type: 'ok', host, url: `${host}/${slug}`, protocol })
+    )
   } catch (error) {
     console.error(error)
     return c.html(IndexPage({ type: 'error', host }))
