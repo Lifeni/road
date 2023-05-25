@@ -8,13 +8,13 @@
     "deploy": "wrangler deploy --minify src/app.ts"
   },
   "dependencies": {
-    "@nuintun/qrcode": "^3.3.4",
-    "hono": "^3.2.1",
+    "@nuintun/qrcode": "^3.3.5",
+    "hono": "^3.2.2",
     "reflare": "^1.1.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230511.0",
+    "@cloudflare/workers-types": "^4.20230518.0",
     "prettier": "^2.8.8",
-    "wrangler": "^3.0.0"
+    "wrangler": "^3.0.1"
   }
 }

@@ -1,26 +1,33 @@
 import { Hono } from 'hono'
+import { serveStatic } from 'hono/cloudflare-workers'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
-import { Favicon } from './components/base/Icons'
 import { proxy } from './libs/proxy'
 import { redirect } from './libs/redirect'
 import { IndexPage } from './routers'
 
 const app = new Hono()
-export const reserved = ['/', '/ids', '/+', '/-', '/robots.txt', '/favicon.svg']
+export const reserved = [
+  '/',
+  '/ids',
+  '/+',
+  '/-',
+  '/robots.txt',
+  '/favicon.svg',
+  '/favicon.ico',
+]
 
 app.use('*', prettyJSON())
 app.use('*', logger())
+
+app.use('/robots.txt', serveStatic({ path: './robots.txt' }))
+app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
+app.use('/favicon.ico', serveStatic({ path: './favicon.ico' }))
 
 app.get('/', c => {
   const host = new URL(c.req.url).host
   return c.html(IndexPage({ host }))
 })
-
-app.get('/robots.txt', c => c.text('User-agent: *\nDisallow: /'))
-app.get('/favicon.svg', c =>
-  c.html(Favicon, 200, { 'Content-Type': 'image/svg+xml' })
-)
 
 app.get('/ids', async c => {
   const routes = c.env?.routes as KVNamespace

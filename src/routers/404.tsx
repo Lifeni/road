@@ -1,5 +1,4 @@
 import { Container } from '../components/Container'
-import { Info } from '../components/base/Icons'
 
 interface Props {
   code: 404 | 400 | 403 | 500
@@ -17,7 +16,9 @@ export const ErrorPage = ({ code }: Props) => (
     children={(() => (
       <div class="flash py-2">
         <section class="d-flex flex-items-start">
-          <span class="my-1">{Info}</span>
+          <span class="octicon my-1">
+            <iconify-icon width="16" height="18" icon="octicon:info-16" />
+          </span>
           <div class="d-flex flex-column py-1">
             <span class="f5 mb-1 text-medium">{maps[code][0]}</span>
             <span class="f6 color-fg-subtle">{maps[code][1]}</span>

@@ -1,5 +1,3 @@
-import { Code } from './base/Icons'
-
 const docs = [
   {
     name: '快捷重定向',
@@ -74,7 +72,9 @@ export const Docs = () => (
         !hide && (
           <section class="Box-row">
             <h2 class="h5 pb-1 d-flex flex-items-center">
-              {Code}
+              <span class="octicon d-flex">
+                <iconify-icon width="16" height="16" icon="octicon:code-16" />
+              </span>
               <span class="px-2 flex-1">{name}</span>
             </h2>
             <ul class="list-style-none">

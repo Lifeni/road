@@ -21,6 +21,7 @@ const Head = () => (
     <meta name="robots" content="noindex" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="https://file.lifeni.life/assets/primer.css" />
+    <script src="https://unpkg.com/iconify-icon"></script>
     <title>随意链接</title>
     <meta name="description" content="简单重定向指定链接。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,8 +62,11 @@ export const Style = html`
       overflow: overlay;
     }
 
-    tt, code, samp{
-      font-family: 'Cascadia Code', Consolas, MiSans, 'HarmonyOS Sans SC', monospace;
+    tt,
+    code,
+    samp {
+      font-family: 'Cascadia Code', Consolas, MiSans, 'HarmonyOS Sans SC',
+        monospace;
     }
 
     input {
@@ -96,10 +100,15 @@ export const Style = html`
       line-height: 1.75;
     }
 
+    .flash:not(.Banner) .octicon {
+      margin-right: 0.5rem;
+    }
+
     @media (max-width: 480px) {
       main,
       .flash {
-        max-width:100%;
+        max-width: 100%;
       }
+    }
   </style>
 `

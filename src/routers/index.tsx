@@ -1,7 +1,6 @@
 import { Container } from '../components/Container'
 import { Docs } from '../components/Docs'
 import { Messages } from '../components/Messages'
-import { Bookmark } from '../components/base/Icons'
 
 export interface Props {
   type?: 'ok' | 'error'
@@ -23,7 +22,13 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
           <section class="Box-header d-flex flex-items-start py-3">
             <div class="d-flex flex-column flex-items-start flex-1">
               <div class="d-flex flex-items-center">
-                {Bookmark}
+                <span class="octicon d-flex">
+                  <iconify-icon
+                    width="16"
+                    height="16"
+                    icon="octicon:bookmark-16"
+                  />
+                </span>
                 <h1 class="Box-title px-2">
                   <a href="/" class="color-fg-default">
                     随意链接

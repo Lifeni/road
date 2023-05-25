@@ -2,25 +2,25 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@nuintun/qrcode':
-    specifier: ^3.3.4
-    version: 3.3.4
+    specifier: ^3.3.5
+    version: 3.3.5
   hono:
-    specifier: ^3.2.1
-    version: 3.2.1
+    specifier: ^3.2.2
+    version: 3.2.2
   reflare:
     specifier: ^1.1.4
     version: 1.1.4
 
 devDependencies:
   '@cloudflare/workers-types':
-    specifier: ^4.20230511.0
-    version: 4.20230511.0
+    specifier: ^4.20230518.0
+    version: 4.20230518.0
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
   wrangler:
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^3.0.1
+    version: 3.0.1
 
 packages:
 
@@ -75,8 +75,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20230511.0:
-    resolution: {integrity: sha512-Br4i/8+t60HDJIo8o7O9Rrmp03bhdejRW9klb0bK9EfG5Ii7qz5G3PJO12gUz+Vu9m1v9tZ9KOh3Gg8oshXtug==}
+  /@cloudflare/workers-types@4.20230518.0:
+    resolution: {integrity: sha512-A0w1V+5SUawGaaPRlhFhSC/SCDT9oQG8TMoWOKFLA4qbqagELqEAFD4KySBIkeVOvCBLT1DZSYBMCxbXddl0kw==}
     dev: true
 
   /@esbuild-plugins/node-globals-polyfill@0.1.1(esbuild@0.16.3):
@@ -295,8 +295,8 @@ packages:
     dev: true
     optional: true
 
-  /@nuintun/qrcode@3.3.4:
-    resolution: {integrity: sha512-lzwIxB7tNidKazA8Ucdo1CHQhOVI7NKNF0D272xSo33Mvf8ZSaUM5eWrhy36RsEVVM7PkJeeFJLYb8UPPaaEfA==}
+  /@nuintun/qrcode@3.3.5:
+    resolution: {integrity: sha512-4aDbqJsku+VIw50F+a2QpREAd2Vw8ehJ63UBb2+4Ox3ko7qsEgK5yaO/1rlv2VujJEnWKbDK/Z74K/bIdvOmjw==}
     dependencies:
       tslib: 2.5.2
     dev: false
@@ -552,8 +552,8 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
-  /hono@3.2.1:
-    resolution: {integrity: sha512-yWpBvr5E5u2JPsVfgBOBlfqbpTCkTE5nZWB0WrA5QJYTQCf39WjhkZ4iFLP/tv4hgWBtXC+aWGyCHt11H10ghg==}
+  /hono@3.2.2:
+    resolution: {integrity: sha512-yVkYyefATYGz6j7iDcugtEvg4AgpccE1tDYnmvTmXDR4NQrUJ3/SdHU9V7UuWQjGtfrBujeBUAq70oc82ADsvA==}
     engines: {node: '>=16.0.0'}
     dev: false
 
@@ -938,8 +938,8 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20230512.0
     dev: true
 
-  /wrangler@3.0.0:
-    resolution: {integrity: sha512-azppXJjEQeaVg3wxFZJOGDGtpR8e9clHr2aHuanGHOk9vX3gvesCv97BF/n8qh1Y1d7vDKOBdfQW3UOYZNFGNw==}
+  /wrangler@3.0.1:
+    resolution: {integrity: sha512-YamXlRjkMO/V3Fvq7IC9H9GDWIbNGc4IV3l1Z5q45XYTWxUYbkwXyiTAfpmqhyl5wx+XEPKe3k/ubqmW+r63yQ==}
     engines: {node: '>=16.13.0'}
     hasBin: true
     dependencies:
