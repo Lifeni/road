@@ -42,7 +42,7 @@ const Body = ({ children }: Props) => (
 
     <footer class="width-full d-flex flex-row flex-justify-end px-6 py-5">
       <a
-        class="Link--onHover Link--secondary f6"
+        class="Link--onHover Link--secondary"
         href="https://beian.miit.gov.cn/"
         target="_blank"
         rel="noopener noreferrer"
