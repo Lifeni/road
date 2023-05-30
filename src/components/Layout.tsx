@@ -4,7 +4,7 @@ interface Props {
   children: string
 }
 
-export const Container = ({ children }: Props) => html`<!DOCTYPE html>
+export const Layout = ({ children }: Props) => html`<!DOCTYPE html>
   <html
     lang="zh-hans"
     data-color-mode="auto"
@@ -40,7 +40,7 @@ const Body = ({ children }: Props) => (
       {children}
     </main>
 
-    <footer class="width-full d-flex flex-row flex-justify-end px-6 py-5">
+    <footer class="width-full f6 d-flex flex-row flex-justify-end px-6 py-5">
       <a
         class="Link--onHover Link--secondary"
         href="https://beian.miit.gov.cn/"

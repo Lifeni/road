@@ -1,4 +1,4 @@
-import { Container } from '../components/Container'
+import { Layout } from '../components/Layout'
 
 interface Props {
   code: 404 | 400 | 403 | 500
@@ -12,7 +12,7 @@ const maps = {
 }
 
 export const ErrorPage = ({ code }: Props) => (
-  <Container
+  <Layout
     children={(() => (
       <div class="flash py-2">
         <section class="d-flex flex-items-start">

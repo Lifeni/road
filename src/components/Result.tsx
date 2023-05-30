@@ -1,7 +1,7 @@
-import { type Props } from '../routers/index'
-import { QRCode } from './QRCode'
+import { type Props } from '../routers'
+import { Encoder, ErrorCorrectionLevel } from '@nuintun/qrcode'
 
-export const Messages = ({ type, url, protocol }: Props) => (
+export const Result = ({ type, url, protocol }: Props) => (
   <div>
     {type === 'ok' ? (
       <div class="flash flash-full flash-success py-2 pl-3 pr-2 border-0 border-top">
@@ -68,3 +68,22 @@ export const Messages = ({ type, url, protocol }: Props) => (
     ) : null}
   </div>
 )
+
+export const QRCode = ({ url, protocol }: Props) => {
+  if (!url) return null
+  const qrcode = new Encoder()
+  qrcode.setEncodingHint(true)
+  qrcode.setErrorCorrectionLevel(ErrorCorrectionLevel.H)
+  qrcode.write(`${protocol}//${url}`)
+  qrcode.make()
+
+  return (
+    <article class="d-flex flex-column flex-items-center flex-justify-center">
+      <img
+        class="width-full rounded-2"
+        src={qrcode.toDataURL(8)}
+        title={`${protocol}//${url}`}
+      />
+    </article>
+  )
+}

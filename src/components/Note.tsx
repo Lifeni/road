@@ -1,4 +1,4 @@
-const docs = [
+const apis = [
   {
     name: '快捷重定向',
     hide: false,
@@ -65,9 +65,9 @@ const maps = {
   DELETE: 'danger',
 }
 
-export const Docs = () => (
+export const Note = () => (
   <article>
-    {docs.map(
+    {apis.map(
       ({ name, apis, hide }) =>
         !hide && (
           <section class="Box-row">

@@ -1,6 +1,6 @@
-import { Container } from '../components/Container'
-import { Docs } from '../components/Docs'
-import { Messages } from '../components/Messages'
+import { Layout } from '../components/Layout'
+import { Note } from '../components/Note'
+import { Result } from '../components/Result'
 
 export interface Props {
   type?: 'ok' | 'error'
@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export const IndexPage = ({ type, url, protocol }: Props) => (
-  <Container
+  <Layout
     children={(() => (
       <>
         <form
@@ -42,7 +42,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
             <details class="details-overlay details-overlay-dark">
               <summary class="btn btn-sm">API</summary>
               <aside class="Box color-shadow-extra-large">
-                <Docs />
+                <Note />
               </aside>
             </details>
           </section>
@@ -71,7 +71,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
               </button>
             </section>
           </section>
-          <Messages type={type} url={url} protocol={protocol} />
+          <Result type={type} url={url} protocol={protocol} />
         </form>
         <p class="w-full f6 text-center color-fg-subtle pt-2 mt-1 mb-0">
           {'Powered by '}
