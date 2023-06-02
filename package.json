@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@nuintun/qrcode": "^3.3.5",
-    "hono": "^3.2.2",
+    "hono": "^3.2.3",
     "reflare": "^1.1.4"
   },
   "devDependencies": {

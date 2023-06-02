@@ -5,8 +5,8 @@ dependencies:
     specifier: ^3.3.5
     version: 3.3.5
   hono:
-    specifier: ^3.2.2
-    version: 3.2.2
+    specifier: ^3.2.3
+    version: 3.2.3
   reflare:
     specifier: ^1.1.4
     version: 1.1.4
@@ -552,8 +552,8 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
-  /hono@3.2.2:
-    resolution: {integrity: sha512-yVkYyefATYGz6j7iDcugtEvg4AgpccE1tDYnmvTmXDR4NQrUJ3/SdHU9V7UuWQjGtfrBujeBUAq70oc82ADsvA==}
+  /hono@3.2.3:
+    resolution: {integrity: sha512-Qm8Kbu+cUPVk2mbe5w224Z7HEyJQs6j0VAxUqEtqYDw6gGaHUcYOqJJ/G++AMlxhVkS5YzV1voiR5PZwhYkXuQ==}
     engines: {node: '>=16.0.0'}
     dev: false
 
