@@ -73,7 +73,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
           </section>
           <Result type={type} url={url} protocol={protocol} />
         </form>
-        <p class="w-full f6 text-center color-fg-subtle pt-2 mt-1 mb-0">
+        <p class="w-full f6 text-center color-fg-subtle pt-2 my-0">
           {'Powered by '}
           <a
             href="https://developers.cloudflare.com/workers/"

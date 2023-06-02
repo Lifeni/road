@@ -4,8 +4,8 @@ import { Encoder, ErrorCorrectionLevel } from '@nuintun/qrcode'
 export const Result = ({ type, url, protocol }: Props) => (
   <div>
     {type === 'ok' ? (
-      <div class="flash flash-full flash-success py-2 pl-3 pr-2 border-0 border-top">
-        <section class="d-flex flex-items-start mt-1 mb-2">
+      <div class="flash flash-full flash-success pt-2 pb-1 pl-3 pr-2 border-0 border-top">
+        <section class="d-flex flex-items-start my-1">
           <span class="octicon">
             <iconify-icon width="16" height="18" icon="octicon:check-16" />
           </span>
