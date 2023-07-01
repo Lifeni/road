@@ -1,4 +1,4 @@
-import { type Props } from '../routers'
+import { type Props } from '../../routers'
 import { Encoder, ErrorCorrectionLevel } from '@nuintun/qrcode'
 
 export const Result = ({ type, url, protocol }: Props) => (

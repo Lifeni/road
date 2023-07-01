@@ -12,12 +12,18 @@ const reserved = [
   '/-',
   '/robots.txt',
   '/favicon.svg',
+  '/favicon.png',
   '/favicon.ico',
+  '/sw.js',
+  '/manifest.json',
 ]
 
-redirect.use('/robots.txt', serveStatic({ path: './robots.txt' }))
 redirect.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
+redirect.use('/favicon.png', serveStatic({ path: './favicon.png' }))
 redirect.use('/favicon.ico', serveStatic({ path: './favicon.ico' }))
+redirect.use('/sw.js', serveStatic({ path: './sw.js' }))
+redirect.use('/manifest.json', serveStatic({ path: './manifest.json' }))
+redirect.use('/robots.txt', serveStatic({ path: './robots.txt' }))
 
 redirect.get('/', c => {
   const host = new URL(c.req.url).host

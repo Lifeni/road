@@ -4,7 +4,7 @@ import useReflare from 'reflare'
 export const proxy = new Hono()
 
 proxy.get('/*', async c => {
-  let path = c.req.path.replace('/-/', '')
+  let path = c.req.path.replace('iokl.link/-/', '')
   if (!path) return c.body(null, 400)
   if (!path.startsWith('http://') && !path.startsWith('https://'))
     path = 'https://' + path

@@ -26,11 +26,14 @@ const Head = () => (
     <link rel="stylesheet" href="https://file.lifeni.life/assets/primer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#a183f4"></meta>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=auto"
       rel="stylesheet"
     />
     {Style}
+    {Scripts}
   </head>
 )
 
@@ -52,6 +55,19 @@ const Body = ({ children }: Props) => (
     </footer>
   </body>
 )
+
+const Scripts = html`
+  <script>
+    const registerServiceWorker = async () => {
+      if ('serviceWorker' in navigator)
+        await navigator.serviceWorker.register('/sw.js', {
+          scope: '/',
+        })
+    }
+
+    registerServiceWorker()
+  </script>
+`
 
 export const Style = html`
   <style>

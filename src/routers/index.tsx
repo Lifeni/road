@@ -1,6 +1,6 @@
 import { Layout } from '../components/Layout'
-import { Note } from '../components/Note'
-import { Result } from '../components/Result'
+import { Note } from '../components/redirect/Note'
+import { Result } from '../components/redirect/Result'
 
 export interface Props {
   type?: 'ok' | 'error'
