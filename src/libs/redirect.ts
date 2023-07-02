@@ -15,14 +15,17 @@ const reserved = [
   '/favicon.png',
   '/favicon.ico',
   '/sw.js',
-  '/manifest.json',
+  '/manifest.webmanifest',
 ]
 
 redirect.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 redirect.use('/favicon.png', serveStatic({ path: './favicon.png' }))
 redirect.use('/favicon.ico', serveStatic({ path: './favicon.ico' }))
 redirect.use('/sw.js', serveStatic({ path: './sw.js' }))
-redirect.use('/manifest.json', serveStatic({ path: './manifest.json' }))
+redirect.use(
+  '/manifest.webmanifest',
+  serveStatic({ path: './manifest.webmanifest' })
+)
 redirect.use('/robots.txt', serveStatic({ path: './robots.txt' }))
 
 redirect.get('/', c => {

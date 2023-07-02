@@ -26,7 +26,7 @@ const Head = () => (
     <link rel="stylesheet" href="https://file.lifeni.life/assets/primer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#a183f4"></meta>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=auto"
