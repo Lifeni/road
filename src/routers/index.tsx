@@ -1,5 +1,4 @@
 import { Layout } from '../components/Layout'
-import { Note } from '../components/redirect/Note'
 import { Result } from '../components/redirect/Result'
 
 export interface Props {
@@ -39,12 +38,14 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
                 简单重定向指定链接
               </span>
             </div>
-            <details class="details-overlay details-overlay-dark">
-              <summary class="btn btn-sm">API</summary>
-              <aside class="Box color-shadow-extra-large">
-                <Note />
-              </aside>
-            </details>
+            <a
+              class="btn btn-sm"
+              href="https://codeberg.org/LFN/router"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              代码
+            </a>
           </section>
           <section class="Box-body border-bottom-0">
             <input

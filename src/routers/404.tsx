@@ -20,7 +20,7 @@ export const ErrorPage = ({ code }: Props) => (
             <iconify-icon width="16" height="18" icon="octicon:info-16" />
           </span>
           <div class="d-flex flex-column py-1">
-            <span class="f5 mb-1 text-medium">{maps[code][0]}</span>
+            <span class="f5 mb-1 text-bold">{maps[code][0]}</span>
             <span class="f6 color-fg-subtle">{maps[code][1]}</span>
           </div>
         </section>
