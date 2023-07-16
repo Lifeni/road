@@ -21,9 +21,13 @@ const Head = () => (
     <meta name="robots" content="noindex" />
     <title>随意链接</title>
     <meta name="description" content="简单重定向指定链接。" />
-    <script src="https://unpkg.com/iconify-icon"></script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="https://file.lifeni.life/assets/primer.css" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <script src="https://unpkg.com/iconify-icon"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@primer/css/dist/primer.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="manifest" href="/manifest.webmanifest" />
