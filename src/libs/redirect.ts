@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { IndexPage } from '../routers'
 import { ErrorPage } from '../routers/404'
+import { RedirHost } from './const'
 
 export const redirect = new Hono()
 
@@ -59,7 +60,7 @@ redirect.post('/', async c => {
     await routes.put(slug, url)
     if (slug === `${ids}`) await routes.put('ids', slug)
     return c.html(
-      IndexPage({ type: 'ok', host, url: `${host}/${slug}`, protocol })
+      IndexPage({ type: 'ok', host, url: `${RedirHost || host}/${slug}`, protocol })
     )
   } catch (error) {
     console.error(error)
