@@ -37,7 +37,7 @@ redirect.get('/', c => {
 })
 
 redirect.get('/ids', async c => {
-  const routes = c.env?.routes as KVNamespace
+  const routes = c.env?.road as KVNamespace
   const ids = Number(await routes.get('ids')) || 1
   const json =
     c.req.query('json') !== undefined || c.req.query('j') !== undefined
@@ -48,8 +48,8 @@ redirect.get('/ids', async c => {
 
 redirect.post('/', async c => {
   const form = await c.req.formData()
-  const routes = c.env?.routes as KVNamespace
-  const ids = (Number(await routes.get('ids')) || 1) + 1
+  const routes = c.env?.road as KVNamespace
+  const ids = (Number(await routes.get('ids')) || 0) + 1
 
   const slug = form.get('slug') || `${ids}`
   const url = form.get('url')
@@ -79,7 +79,7 @@ redirect.get('/:slug', async c => {
   const slug = c.req.param('slug')
   if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
-  const routes = c.env?.routes as KVNamespace
+  const routes = c.env?.road as KVNamespace
   let url = await routes.get(slug)
   if (!url) return c.html(ErrorPage({ code: 404 }), 404)
   if (!url.startsWith('http://') && !url.startsWith('https://'))
@@ -101,7 +101,7 @@ redirect.delete('/:slug', async c => {
   const host = new URL(c.req.url).host
   if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
-  const routes = c.env?.routes as KVNamespace
+  const routes = c.env?.road as KVNamespace
   const url = await routes.get(slug)
 
   if (!url) return c.html(ErrorPage({ code: 404 }), 404)
@@ -119,7 +119,7 @@ redirect.put('/:slug', async c => {
   const host = new URL(c.req.url).host
   if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
-  const routes = c.env?.routes as KVNamespace
+  const routes = c.env?.road as KVNamespace
   const target = c.req.query('to')
 
   if (!target) return c.html(ErrorPage({ code: 400 }), 400)
@@ -137,7 +137,7 @@ redirect.post('/:slug', async c => {
   const host = new URL(c.req.url).host
   if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
-  const routes = c.env?.routes as KVNamespace
+  const routes = c.env?.road as KVNamespace
   const url = await routes.get(slug)
   const target = c.req.query('to')
 
@@ -153,8 +153,8 @@ redirect.post('/:slug', async c => {
 
 redirect.get('/+/:url', async c => {
   const url = c.req.param('url')
-  const routes = c.env?.routes as KVNamespace
-  const ids = (Number(await routes.get('ids')) || 1) + 1
+  const routes = c.env?.road as KVNamespace
+  const ids = (Number(await routes.get('ids')) || 0) + 1
   const host = new URL(c.req.url).host
 
   const json =
