@@ -13,7 +13,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
     children={(() => (
       <>
         <form
-          class="Box width-full"
+          class="Box width-full mb-0"
           action="/"
           method="post"
           autocomplete="off"
@@ -34,8 +34,11 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
                   </a>
                 </h1>
               </div>
-              <span class="text-small color-fg-subtle pt-1">
-                简单重定向指定链接
+              <span
+                class="text-small color-fg-subtle pt-1"
+                title="随时删库，请勿使用"
+              >
+                测试用，简单重定向指定链接
               </span>
             </div>
             <a

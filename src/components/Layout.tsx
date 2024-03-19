@@ -20,7 +20,7 @@ const Head: FC = () => (
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>随意链接</title>
-    <meta name="description" content="简单重定向指定链接。" />
+    <meta name="description" content="测试用，简单重定向指定链接。" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://unpkg.com" />
     <script src="https://unpkg.com/iconify-icon"></script>
