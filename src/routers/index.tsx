@@ -40,7 +40,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
             </div>
             <a
               class="btn btn-sm"
-              href="https://codeberg.org/LFN/router"
+              href="https://github.com/Lifeni/road"
               target="_blank"
               rel="noopener noreferrer"
             >

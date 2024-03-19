@@ -3,6 +3,8 @@ import { serveStatic } from 'hono/cloudflare-workers'
 import { IndexPage } from '../routers'
 import { ErrorPage } from '../routers/404'
 import { RedirHost } from './const'
+// @ts-ignore
+import manifest from '__STATIC_CONTENT_MANIFEST'
 
 export const redirect = new Hono()
 
@@ -19,15 +21,15 @@ const reserved = [
   '/manifest.webmanifest',
 ]
 
-redirect.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
-redirect.use('/favicon.png', serveStatic({ path: './favicon.png' }))
-redirect.use('/favicon.ico', serveStatic({ path: './favicon.ico' }))
-redirect.use('/sw.js', serveStatic({ path: './sw.js' }))
+redirect.use('/favicon.svg', serveStatic({ path: './favicon.svg', manifest }))
+redirect.use('/favicon.png', serveStatic({ path: './favicon.png', manifest }))
+redirect.use('/favicon.ico', serveStatic({ path: './favicon.ico', manifest }))
+redirect.use('/sw.js', serveStatic({ path: './sw.js', manifest }))
 redirect.use(
   '/manifest.webmanifest',
-  serveStatic({ path: './manifest.webmanifest' })
+  serveStatic({ path: './manifest.webmanifest', manifest }),
 )
-redirect.use('/robots.txt', serveStatic({ path: './robots.txt' }))
+redirect.use('/robots.txt', serveStatic({ path: './robots.txt', manifest }))
 
 redirect.get('/', c => {
   const host = new URL(c.req.url).host
@@ -60,7 +62,12 @@ redirect.post('/', async c => {
     await routes.put(slug, url)
     if (slug === `${ids}`) await routes.put('ids', slug)
     return c.html(
-      IndexPage({ type: 'ok', host, url: `${RedirHost || host}/${slug}`, protocol })
+      IndexPage({
+        type: 'ok',
+        host,
+        url: `${RedirHost || host}/${slug}`,
+        protocol,
+      }),
     )
   } catch (error) {
     console.error(error)

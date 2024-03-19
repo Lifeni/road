@@ -1,19 +1,25 @@
 {
-  "name": "router",
+  "displayName": "随意链接",
+  "name": "road",
+  "description": "Across the Great Wall we can reach every corner in the world.",
   "private": true,
+  "author": {
+    "name": "Liang Fengning",
+    "email": "liangfengning@foxmail.com"
+  },
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "wrangler": "wrangler",
     "dev": "wrangler dev src/app.ts",
     "deploy": "wrangler deploy --minify src/app.ts"
   },
   "dependencies": {
-    "@nuintun/qrcode": "^3.4.0",
-    "hono": "^3.8.1"
+    "@nuintun/qrcode": "^4.1.1",
+    "hono": "^4.1.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231016.0",
-    "prettier": "^3.0.3",
-    "wrangler": "^3.13.2"
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "prettier": "^3.2.5",
+    "wrangler": "^3.32.0"
   }
 }

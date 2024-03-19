@@ -1,20 +1,20 @@
+// import { html } from 'hono/html'
 import { html } from 'hono/html'
+import type { FC } from 'hono/jsx'
 
-interface Props {
-  children: string
-}
-
-export const Layout = ({ children }: Props) => html`<!DOCTYPE html>
+export const Layout: FC = ({ children }) => (
   <html
     lang="zh-hans"
     data-color-mode="auto"
     data-light-theme="light"
     data-dark-theme="dark"
   >
-    ${Head()} ${Body({ children })}
-  </html>`
+    <Head />
+    <Body>{children}</Body>
+  </html>
+)
 
-const Head = () => (
+const Head: FC = () => (
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@ const Head = () => (
       href="https://unpkg.com/@primer/css/dist/primer.css"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#a183f4"></meta>
     <link
@@ -41,7 +41,7 @@ const Head = () => (
   </head>
 )
 
-const Body = ({ children }: Props) => (
+const Body: FC = ({ children }) => (
   <body class="d-flex flex-column flex-items-center flex-justify-center text-medium">
     <main class="flex-1 px-6 py-5 width-full clearfix d-flex flex-column flex-items-center flex-justify-center">
       {children}
@@ -77,8 +77,14 @@ export const Style = html`
   <style>
     body {
       min-height: 100vh;
-      font-family: Inter, -apple-system, MiSans, 'HarmonyOS Sans SC', system-ui,
-        'Roboto', sans-serif;
+      font-family:
+        Inter,
+        -apple-system,
+        MiSans,
+        'HarmonyOS Sans SC',
+        system-ui,
+        'Roboto',
+        sans-serif;
       overflow: overlay;
     }
 

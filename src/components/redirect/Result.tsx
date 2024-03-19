@@ -1,5 +1,5 @@
+import { Byte, Encoder } from '@nuintun/qrcode'
 import type { Props } from '../../routers'
-import { Encoder, ErrorCorrectionLevel } from '@nuintun/qrcode'
 
 export const Result = ({ type, url, protocol }: Props) => (
   <div>
@@ -71,11 +71,8 @@ export const Result = ({ type, url, protocol }: Props) => (
 
 export const QRCode = ({ url, protocol }: Props) => {
   if (!url) return null
-  const qrcode = new Encoder()
-  qrcode.setEncodingHint(true)
-  qrcode.setErrorCorrectionLevel(ErrorCorrectionLevel.H)
-  qrcode.write(`${protocol}//${url}`)
-  qrcode.make()
+  const encoder = new Encoder({ level: 'H' })
+  const qrcode = encoder.encode(new Byte(`${protocol}//${url}`))
 
   return (
     <article class="d-flex flex-column flex-items-center flex-justify-center">
