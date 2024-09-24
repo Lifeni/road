@@ -1,17 +1,22 @@
 import { html } from 'hono/html'
-import type { FC } from 'hono/jsx'
+import { Fragment, type FC } from 'hono/jsx'
 
 export const Container: FC = ({ children }) => (
-  <html
-    lang="zh-hans"
-    data-color-mode="auto"
-    data-light-theme="light"
-    data-dark-theme="dark"
-  >
-    <Head />
-    <Body>{children}</Body>
-  </html>
+  <Fragment>
+    <DOCTYPE />
+    <html
+      lang="zh-hans"
+      data-color-mode="auto"
+      data-light-theme="light"
+      data-dark-theme="dark"
+    >
+      <Head />
+      <Body>{children}</Body>
+    </html>
+  </Fragment>
 )
+
+const DOCTYPE: FC = () => html`<!doctype html>`
 
 const Head: FC = () => (
   <head>
@@ -26,14 +31,8 @@ const Head: FC = () => (
       rel="stylesheet"
       href="https://unpkg.com/@primer/css/dist/primer.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#a183f4"></meta>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=auto"
-      rel="stylesheet"
-    />
     {Style}
     {Scripts}
   </head>
