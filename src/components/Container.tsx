@@ -1,8 +1,7 @@
-// import { html } from 'hono/html'
 import { html } from 'hono/html'
 import type { FC } from 'hono/jsx'
 
-export const Layout: FC = ({ children }) => (
+export const Container: FC = ({ children }) => (
   <html
     lang="zh-hans"
     data-color-mode="auto"
@@ -23,7 +22,6 @@ const Head: FC = () => (
     <meta name="description" content="测试用，简单重定向指定链接。" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://unpkg.com" />
-    <script src="https://unpkg.com/iconify-icon"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/@primer/css/dist/primer.css"

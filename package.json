@@ -1,7 +1,7 @@
 {
   "displayName": "随意链接",
   "name": "road",
-  "description": "Across the Great Wall we can reach every corner in the world.",
+  "description": "测试用，简单重定向指定链接",
   "private": true,
   "author": {
     "name": "Liang Fengning",
@@ -14,12 +14,12 @@
     "deploy": "wrangler deploy --minify src/app.ts"
   },
   "dependencies": {
-    "@nuintun/qrcode": "^4.1.1",
-    "hono": "^4.1.0"
+    "@nuintun/qrcode": "^4.1.5",
+    "hono": "^4.6.3"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240208.0",
-    "prettier": "^3.2.5",
-    "wrangler": "^3.32.0"
+    "@cloudflare/workers-types": "^4.20240919.0",
+    "prettier": "^3.3.3",
+    "wrangler": "^3.78.8"
   }
 }

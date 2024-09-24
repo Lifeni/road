@@ -1,14 +1,12 @@
 import { Byte, Encoder } from '@nuintun/qrcode'
-import type { Props } from '../../routers'
+import type { Props } from '../types'
 
 export const Result = ({ type, url, protocol }: Props) => (
   <div>
     {type === 'ok' ? (
-      <div class="flash flash-full flash-success pt-2 pb-1 pl-3 pr-2 border-0 border-top">
+      <div class="flash flash-full pt-2 pb-1 pl-3 pr-2 border-0 border-top">
         <section class="d-flex flex-items-start my-1">
-          <span class="octicon">
-            <iconify-icon width="16" height="18" icon="octicon:check-16" />
-          </span>
+          <span class="octicon">🎉</span>
           <span class="overflow-hidden">
             <span class="mr-1">已重定向到</span>
             <span class="Truncate">
@@ -29,10 +27,7 @@ export const Result = ({ type, url, protocol }: Props) => (
             aria-label="复制链接"
             onclick={`navigator.clipboard.writeText('${protocol}//${url}')`}
           >
-            <span class="octicon">
-              <iconify-icon width="14" height="14" icon="octicon:copy-16" />
-            </span>{' '}
-            复制
+            🖱️ 复制
           </button>
 
           <details class="details-overlay details-overlay-dark">
@@ -41,14 +36,7 @@ export const Result = ({ type, url, protocol }: Props) => (
               type="button"
               aria-label="二维码"
             >
-              <span class="octicon">
-                <iconify-icon
-                  width="14"
-                  height="14"
-                  icon="octicon:devices-16"
-                />
-              </span>{' '}
-              二维码
+              📱 二维码
             </summary>
             <aside class="Box color-shadow-extra-large">
               <QRCode url={url} protocol={protocol} />
@@ -57,11 +45,9 @@ export const Result = ({ type, url, protocol }: Props) => (
         </section>
       </div>
     ) : type === 'error' ? (
-      <div class="flash flash-full flash-warn py-2 border-0 border-top">
+      <div class="flash flash-full flash-error py-2 border-0 border-top">
         <section class="d-flex flex-items-center my-1">
-          <span class="octicon">
-            <iconify-icon width="16" height="18" icon="octicon:x-16" />
-          </span>
+          <span class="octicon">😭</span>
           <span>重定向失败，请稍后再试</span>
         </section>
       </div>

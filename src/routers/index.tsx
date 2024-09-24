@@ -1,15 +1,9 @@
-import { Layout } from '../components/Layout'
-import { Result } from '../components/redirect/Result'
-
-export interface Props {
-  type?: 'ok' | 'error'
-  url?: string
-  protocol?: string
-  host?: string
-}
+import { Container } from '../components/Container'
+import { Result } from '../components/Result'
+import type { Props } from '../types'
 
 export const IndexPage = ({ type, url, protocol }: Props) => (
-  <Layout
+  <Container
     children={(() => (
       <>
         <form
@@ -21,13 +15,7 @@ export const IndexPage = ({ type, url, protocol }: Props) => (
           <section class="Box-header d-flex flex-items-start py-3">
             <div class="d-flex flex-column flex-items-start flex-1">
               <div class="d-flex flex-items-center">
-                <span class="octicon d-flex">
-                  <iconify-icon
-                    width="16"
-                    height="16"
-                    icon="octicon:bookmark-16"
-                  />
-                </span>
+                <span class="octicon d-flex">🔗</span>
                 <h1 class="Box-title px-2">
                   <a href="/" class="color-fg-default">
                     随意链接
