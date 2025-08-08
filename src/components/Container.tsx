@@ -29,7 +29,7 @@ const Head: FC = () => (
     <link rel="preconnect" href="https://unpkg.com" />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/@primer/css/dist/primer.css"
+      href="https://unpkg.com/@primer/css@21.5.1/dist/primer.css"
     />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#a183f4"></meta>
