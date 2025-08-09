@@ -2,6 +2,8 @@ import { Hono } from 'hono'
 import { prettyJSON as pretty } from 'hono/pretty-json'
 import { logger } from 'hono/logger'
 import { redirect } from './libs/redirect'
+import { env } from 'cloudflare:workers'
+
 
 
 const app = new Hono()

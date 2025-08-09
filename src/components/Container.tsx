@@ -26,11 +26,7 @@ const Head: FC = () => (
     <title>随意链接</title>
     <meta name="description" content="测试用，简单重定向指定链接。" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://unpkg.com" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@primer/css@21.5.1/dist/primer.css"
-    />
+    <link rel="stylesheet" href="/primer.css" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#a183f4"></meta>
     {Style}
@@ -88,8 +84,8 @@ export const Style = html`
     tt,
     code,
     samp {
-      font-family: 'Cascadia Code', Consolas, MiSans, 'HarmonyOS Sans SC',
-        monospace;
+      font-family:
+        'Cascadia Code', Consolas, MiSans, 'HarmonyOS Sans SC', monospace;
     }
 
     input {

@@ -1,10 +1,11 @@
 name = "road"
-compatibility_date = "2023-12-01"
+compatibility_date = "2025-05-05"
 
 main = "src/app.ts"
 
-[site]
-bucket = "./src/assets"
+[assets]
+directory  = "./src/assets"
+binding = "ASSETS"
 
 [[kv_namespaces]]
 binding = "road"

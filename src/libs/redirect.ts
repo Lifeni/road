@@ -1,16 +1,14 @@
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/cloudflare-workers'
 import { IndexPage } from '../routers'
 import { ErrorPage } from '../routers/404'
-
-// https://hono.dev/docs/getting-started/cloudflare-workers
-// @ts-ignore
-import manifest from '__STATIC_CONTENT_MANIFEST'
 
 // 页面上展示的域名
 const RedirHost = 'iokl.link'
 
-type Bindings = { road: KVNamespace }
+type Bindings = {
+  road: KVNamespace
+  ASSETS: { fetch: (url: string) => Promise<Response> }
+}
 export const redirect = new Hono<{ Bindings: Bindings }>()
 
 const reserved = [
@@ -23,18 +21,48 @@ const reserved = [
   '/favicon.png',
   '/favicon.ico',
   '/sw.js',
+  '/primer.css',
   '/manifest.webmanifest',
 ]
 
-redirect.use('/favicon.svg', serveStatic({ path: './favicon.svg', manifest }))
-redirect.use('/favicon.png', serveStatic({ path: './favicon.png', manifest }))
-redirect.use('/favicon.ico', serveStatic({ path: './favicon.ico', manifest }))
-redirect.use('/sw.js', serveStatic({ path: './sw.js', manifest }))
-redirect.use(
-  '/manifest.webmanifest',
-  serveStatic({ path: './manifest.webmanifest', manifest }),
-)
-redirect.use('/robots.txt', serveStatic({ path: './robots.txt', manifest }))
+redirect.get('/robots.txt', c => {
+  c.header('Content-Type', 'text/plain')
+  c.header('Content-Encoding', 'gzip')
+  return c.env.ASSETS.fetch('/robots.txt')
+})
+
+redirect.get('/favicon.svg', c => {
+  c.header('Content-Type', 'image/svg+xml')
+  return c.env.ASSETS.fetch('/favicon.svg')
+})
+
+redirect.get('/favicon.png', c => {
+  c.header('Content-Type', 'image/png')
+  return c.env.ASSETS.fetch('/favicon.png')
+})
+
+redirect.get('/favicon.ico', c => {
+  c.header('Content-Type', 'image/x-icon')
+  return c.env.ASSETS.fetch('/favicon.ico')
+})
+
+redirect.get('/sw.js', c => {
+  c.header('Content-Type', 'application/javascript')
+  c.header('Content-Encoding', 'gzip')
+  return c.env.ASSETS.fetch('/sw.js')
+})
+
+redirect.get('/primer.css', c => {
+  c.header('Content-Type', 'text/css')
+  c.header('Content-Encoding', 'gzip')
+  return c.env.ASSETS.fetch('/primer.css')
+})
+
+redirect.get('/manifest.webmanifest', c => {
+  c.header('Content-Type', 'application/manifest+json')
+  c.header('Content-Encoding', 'gzip')
+  return c.env.ASSETS.fetch('/manifest.webmanifest')
+})
 
 redirect.get('/', c => {
   const host = new URL(c.req.url).host
@@ -112,7 +140,7 @@ redirect.delete('/:slug', async c => {
   if (!url) return c.html(ErrorPage({ code: 404 }), 404)
   try {
     await routes.delete(slug)
-    return c.html(IndexPage({ host }), 204)
+    return c.html(IndexPage({ host }), 200)
   } catch (error) {
     return c.html(ErrorPage({ code: 500 }), 500)
   }
@@ -130,7 +158,7 @@ redirect.put('/:slug', async c => {
   if (!target) return c.html(ErrorPage({ code: 400 }), 400)
   try {
     await routes.put(slug, target)
-    return c.html(IndexPage({ host }), 204)
+    return c.html(IndexPage({ host }), 200)
   } catch (error) {
     return c.html(ErrorPage({ code: 500 }), 500)
   }
@@ -150,7 +178,7 @@ redirect.post('/:slug', async c => {
   if (!target) return c.html(ErrorPage({ code: 400 }), 400)
   try {
     await routes.put(slug, target)
-    return c.html(IndexPage({ host }), 204)
+    return c.html(IndexPage({ host }), 200)
   } catch (error) {
     return c.html(ErrorPage({ code: 500 }), 500)
   }
