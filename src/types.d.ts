@@ -8,3 +8,8 @@ export interface Props {
 export interface ErrorProps {
   code: 404 | 400 | 403 | 500
 }
+
+export interface Env {
+  road: KVNamespace
+  ASSETS: Fetcher
+}

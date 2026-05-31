@@ -1,5 +1,5 @@
 name = "road"
-compatibility_date = "2025-05-05"
+compatibility_date = "2026-05-31"
 
 main = "src/app.ts"
 
@@ -11,3 +11,6 @@ binding = "ASSETS"
 binding = "road"
 id = "5d7b8ab419fb4747a35963e2db105384"
 preview_id = "fe42061ce3834ce3b0e704c5679bcbea"
+
+[triggers]
+crons = ["0 4 * * *"]
