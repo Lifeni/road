@@ -12,22 +12,26 @@ type Bindings = {
 export const redirect = new Hono<{ Bindings: Bindings }>()
 
 const reserved = [
-  '/',
-  '/ids',
-  '/+',
-  '/-',
-  '/robots.txt',
-  '/favicon.svg',
-  '/favicon.png',
-  '/favicon.ico',
-  '/sw.js',
-  '/primer.css',
-  '/manifest.webmanifest',
+  'ids',
+  '+',
+  '-',
+  'robots.txt',
+  'favicon.svg',
+  'favicon.png',
+  'favicon.ico',
+  'sw.js',
+  'primer.css',
+  'manifest.webmanifest',
 ]
+
+// slug 白名单：只允许字母、数字、下划线、连字符
+const slugPattern = /^[a-zA-Z0-9_-]{1,64}$/
+
+const isValidSlug = (slug: string) =>
+  slugPattern.test(slug) && !reserved.includes(slug)
 
 redirect.get('/robots.txt', c => {
   c.header('Content-Type', 'text/plain')
-  c.header('Content-Encoding', 'gzip')
   return c.env.ASSETS.fetch('/robots.txt')
 })
 
@@ -48,19 +52,16 @@ redirect.get('/favicon.ico', c => {
 
 redirect.get('/sw.js', c => {
   c.header('Content-Type', 'application/javascript')
-  c.header('Content-Encoding', 'gzip')
   return c.env.ASSETS.fetch('/sw.js')
 })
 
 redirect.get('/primer.css', c => {
   c.header('Content-Type', 'text/css')
-  c.header('Content-Encoding', 'gzip')
   return c.env.ASSETS.fetch('/primer.css')
 })
 
 redirect.get('/manifest.webmanifest', c => {
   c.header('Content-Type', 'application/manifest+json')
-  c.header('Content-Encoding', 'gzip')
   return c.env.ASSETS.fetch('/manifest.webmanifest')
 })
 
@@ -84,12 +85,14 @@ redirect.post('/', async c => {
   const routes = c.env?.road
   const ids = (Number(await routes.get('ids')) || 0) + 1
 
-  const slug = form.get('slug') || `${ids}`
+  // form 值可能是 File，统一转字符串并过滤空白
+  const rawSlug = String(form.get('slug') ?? '').trim()
+  const slug = rawSlug || `${ids}`
   const url = form.get('url')
   const host = new URL(c.req.url).host
   const protocol = new URL(c.req.url).protocol
 
-  if (reserved.includes(`/${slug}`) || !url)
+  if (!isValidSlug(slug) || typeof url !== 'string' || !url)
     return c.html(IndexPage({ type: 'error', host }))
   try {
     await routes.put(slug, url)
@@ -110,7 +113,7 @@ redirect.post('/', async c => {
 
 redirect.get('/:slug', async c => {
   const slug = c.req.param('slug')
-  if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
+  if (!isValidSlug(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
   const routes = c.env?.road
   let url = await routes.get(slug)
@@ -132,7 +135,7 @@ redirect.get('/:slug', async c => {
 redirect.delete('/:slug', async c => {
   const slug = c.req.param('slug')
   const host = new URL(c.req.url).host
-  if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
+  if (!isValidSlug(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
   const routes = c.env?.road
   const url = await routes.get(slug)
@@ -150,7 +153,7 @@ redirect.delete('/:slug', async c => {
 redirect.put('/:slug', async c => {
   const slug = c.req.param('slug')
   const host = new URL(c.req.url).host
-  if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
+  if (!isValidSlug(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
   const routes = c.env?.road
   const target = c.req.query('to')
@@ -168,7 +171,7 @@ redirect.put('/:slug', async c => {
 redirect.post('/:slug', async c => {
   const slug = c.req.param('slug')
   const host = new URL(c.req.url).host
-  if (reserved.includes(slug)) return c.html(ErrorPage({ code: 403 }), 403)
+  if (!isValidSlug(slug)) return c.html(ErrorPage({ code: 403 }), 403)
 
   const routes = c.env?.road
   const url = await routes.get(slug)

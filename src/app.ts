@@ -10,6 +10,9 @@ app.use('*', pretty())
 app.use('*', logger())
 
 app.route('/', redirect)
-export default app
 
-export const scheduled = reset
+// scheduled 必须挂在 default export 上，否则 Cron 触发器找不到处理器
+export default {
+  fetch: app.fetch,
+  scheduled: reset,
+}

@@ -9,26 +9,34 @@ self.addEventListener('install', e => {
       const cache = await caches.open(cacheName)
       console.log('[Service Worker] Caching all: app shell and content')
       await cache.addAll(contentToCache)
-    })()
+    })(),
   )
 })
 
-// Fetching content using Service Worker
+// Network first: 短链的跳转目标随时会变，绝不能让缓存覆盖真实数据
 self.addEventListener('fetch', e => {
   // Cache http and https only, skip unsupported chrome-extension:// and file://...
   const url = e.request.url
   if (!(url.startsWith('http:') || url.startsWith('https:'))) return
+  // 只缓存 GET，POST/DELETE 等直接放行
+  if (e.request.method !== 'GET') return
 
   e.respondWith(
     (async () => {
-      const r = await caches.match(e.request)
-      console.log(`[Service Worker] Fetching resource: ${e.request.url}`)
-      if (r) return r
-      const response = await fetch(e.request)
-      const cache = await caches.open(cacheName)
-      console.log(`[Service Worker] Caching new resource: ${e.request.url}`)
-      cache.put(e.request, response.clone())
-      return response
-    })()
+      try {
+        const response = await fetch(e.request)
+        // 只缓存正常响应，302/404 等不进缓存
+        if (response.ok) {
+          const cache = await caches.open(cacheName)
+          cache.put(e.request, response.clone())
+        }
+        return response
+      } catch (error) {
+        // 网络失败才回退到缓存
+        const cached = await caches.match(e.request)
+        if (cached) return cached
+        throw error
+      }
+    })(),
   )
 })

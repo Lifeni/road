@@ -6,6 +6,7 @@
     "strict": true,
     "lib": ["ESNext"],
     "types": ["@cloudflare/workers-types"],
+    "skipLibCheck": true,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   }
